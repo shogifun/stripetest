@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stripetest.iml" filepath="$PROJECT_DIR$/.idea/modules/stripetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stripetest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/stripetest_main.iml" group="stripetest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stripetest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/stripetest_test.iml" group="stripetest" />
+    </modules>
+  </component>
+</project>
