@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class ConsoleRunner {
     private StripeTools stripeTools;
-
+    private Scanner in=new Scanner(System.in);
     public ConsoleRunner() {
         try {
             stripeTools = new StripeTools();
@@ -27,22 +27,28 @@ public class ConsoleRunner {
         System.out.println("Enter 1 for creating charge");
         System.out.println("Enter 2 for adding card");
         System.out.println("Enter 3 for show your cards");
-        System.out.println("Enter 4 for exit");
-        Scanner in = new Scanner(System.in);
+        System.out.println("Enter 4 for show charges");
+        System.out.println("Enter 5 for exit");
         String answer = in.nextLine();
         switch (answer) {
             case "1":
                 createCharge();
-                showStartVariants();
+                //showStartVariants();
                 break;
             case "2":
                 addCard();
+
+                //showStartVariants();
                 break;
             case "3":
                 showCards();
                 showStartVariants();
                 break;
             case "4":
+                showCharges();
+                showStartVariants();
+                break;
+            case "5":
                 in.close();
                 System.exit(0);
                 break;
@@ -58,7 +64,6 @@ public class ConsoleRunner {
         String exp_year;
         String exp_month;
         String cvv;
-        Scanner in = new Scanner(System.in);
         System.out.println("Enter card number");
         cardNumber = in.nextLine();
         System.out.println("Enter  year");
@@ -69,51 +74,65 @@ public class ConsoleRunner {
         cvv = in.nextLine();
 
         try {
-            stripeTools.addCartToCustomer(cardNumber,exp_month,exp_year,cvv);
+            stripeTools.addCartToCustomer(cardNumber, exp_month, exp_year, cvv);
             System.out.println("Card successfully added");
-        } catch (CardException | APIException| AuthenticationException | InvalidRequestException | APIConnectionException e) {
+        } catch (CardException | APIException | AuthenticationException | InvalidRequestException | APIConnectionException e) {
             //e.printStackTrace();
             System.out.println(e.getMessage());
 
-        }
-        finally {
+        } finally {
             showStartVariants();
-            in.close();
+
         }
 
     }
-    public void showCards(){
+
+    public void showCards() {
         System.out.print(ResultBuilder.getCardsList(stripeTools.getCreditCards()));
     }
-    public void createCharge(){
+
+    public void createCharge() {
+        if (stripeTools.getCustomer().getSources().getData().isEmpty()) {
+            System.out.println("Credit card not found. You should add credit card first");
+            showStartVariants();
+        }
         System.out.println("Choose card for payment");
         showCards();
-        Scanner in=new Scanner(System.in);
-        int numberOfCard=0;
-        long amount=0;
+        int numberOfCard = 0;
+        long amount = 0;
         try {
-            numberOfCard=in.nextInt();
+            numberOfCard = Integer.parseInt(in.nextLine());
             System.out.println("Enter amount of payment");
-           amount=in.nextLong();
-        }catch (NumberFormatException e){
+            amount = Long.parseLong(in.nextLine());
+        } catch (NumberFormatException e) {
             System.out.println("Invalid number of card");
             in.close();
             showStartVariants();
         }
         System.out.println("Enter currency");
-        String currency=in.nextLine();
+        String currency = in.nextLine();
         System.out.println("Enter payment description");
-        String description=in.nextLine();
+        String description = in.nextLine();
 
         try {
-            Charge resultCharge=stripeTools.doCharge(amount,"usd",numberOfCard,description);
-            System.out.println(resultCharge.getStatus());
+            Charge resultCharge = stripeTools.doCharge(amount, currency, numberOfCard, description);
+            System.out.println("Payment status " + resultCharge.getStatus());
         } catch (CardException | APIException | AuthenticationException | InvalidRequestException | APIConnectionException e) {
             //e.printStackTrace();
             System.out.println(e.getMessage());
         }
+        finally {
+            showStartVariants();
+        }
 
+    }
 
+    public void showCharges() {
+        try {
+            System.out.println(ResultBuilder.getChargeList(stripeTools.getChargesList()));
+        } catch (CardException | APIException | AuthenticationException | InvalidRequestException | APIConnectionException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

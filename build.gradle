@@ -8,8 +8,23 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+jar {
+    baseName = 'gs-gradle'
+    version =  '0.1.0'
+    manifest{
+        attributes 'Main-Class':'com.multibrains.stripetest.StartApp'
 
+    }
+}
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile "com.stripe:stripe-java:4.7.0"
+
 }
+/*jar{
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
+    manifest{
+        attributes 'Main-Class':'com.multibrains.stripetest.StartApp'
+
+    }
+}*/
