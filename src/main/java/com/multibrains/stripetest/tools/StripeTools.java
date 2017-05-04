@@ -13,6 +13,13 @@ import java.util.Map;
 public class StripeTools {
     private Customer customer;
 
+    public StripeTools() throws CardException, APIException, AuthenticationException, InvalidRequestException, APIConnectionException, ArrayIndexOutOfBoundsException {
+        Stripe.apiKey = "tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I";
+        Map<String, Object> customerParams = new HashMap<>();
+        customerParams.put("description", "test customer");
+        customer = Customer.create(customerParams);
+    }
+
     public List<ExternalAccount> getCreditCards() {
         return customer.getSources().getData();
     }
@@ -24,12 +31,6 @@ public class StripeTools {
         return Charge.list(listParams).getData();
     }
 
-    public StripeTools() throws CardException, APIException, AuthenticationException, InvalidRequestException, APIConnectionException, ArrayIndexOutOfBoundsException {
-        Stripe.apiKey = "tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I";
-        Map<String, Object> customerParams = new HashMap<>();
-        customerParams.put("description", "test customer");
-        customer = Customer.create(customerParams);
-    }
 
     public Customer getCustomer() {
         return customer;
