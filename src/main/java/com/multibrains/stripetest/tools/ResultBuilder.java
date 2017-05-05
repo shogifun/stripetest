@@ -35,7 +35,8 @@ public class ResultBuilder {
         StringBuilder result = new StringBuilder();
         int i = 1;
         for (Charge charge : charges) {
-            result.append(i + ". Description " + charge.getDescription() + ", amount - " + charge.getAmount() + ", status " + charge.getStatus() +"\n");
+            result.append(i + ". Description " + charge.getDescription() + ", amount - " + charge.getAmount() +
+                   ", currency - "+charge.getCurrency()+ ", status " + charge.getStatus() +"\n");
             i++;
         }
         return new String(result);
