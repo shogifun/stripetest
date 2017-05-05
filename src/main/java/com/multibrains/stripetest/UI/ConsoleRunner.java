@@ -106,7 +106,6 @@ public class ConsoleRunner {
             amount = Long.parseLong(in.nextLine());
         } catch (NumberFormatException e) {
             System.out.println("Invalid number of card");
-            in.close();
             showStartVariants();
         }
         System.out.println("Enter currency");
