@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="135a8180-56d7-4895-b546-9faccdfd2361" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/multibrains/stripetest/tools/ResultBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/com/multibrains/stripetest/tools/ResultBuilder.java" />
-    </list>
+    <list default="true" id="135a8180-56d7-4895-b546-9faccdfd2361" name="Default" comment="" />
     <ignored path="stripetest.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -1385,7 +1381,7 @@
       <updated>1493798793536</updated>
       <workItem from="1493798815079" duration="32138000" />
       <workItem from="1493899470276" duration="20271000" />
-      <workItem from="1493965474808" duration="2363000" />
+      <workItem from="1493965474808" duration="2893000" />
     </task>
     <servers />
   </component>
@@ -1422,7 +1418,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54772000" />
+    <option name="totallyTimeSpent" value="55302000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
